@@ -14,8 +14,7 @@
 
 Vyplň približný čas strávený s každým nástrojom:
 
-- **Claude Code:** _____ hodín  
-- **GitHub Copilot:** _____ hodín
+- **Claude Code:** 1 hodín  
 
 **Celkový čas vývoja (priližne):** _____ hodín
 
@@ -25,15 +24,30 @@ Vyplň približný čas strávený s každým nástrojom:
 
 ### Prompt #1: _________________________________
 
-**Nástroj:** [ Cursor / Claude Code / Copilot / ChatGPT / Iné ]  
-**Kontext:** [ Setup projektu / OAuth implementácia / ... ]
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ Setup projektu ]
 
 **Prompt:**
 ```
-[Sem vlož celý text promptu - presne ako si ho zadal do AI]
+/init
 ```
 
-**Výsledok:**  
+**Výsledok:**
+✅ Fungoval perfektne 
+
+### Prompt #2: _________________________________
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ Setup projektu - Style Guide ]
+
+**Prompt:**
+```
+@commands/style-guide.md
+```
+
+**Výsledok:**
+⭐⭐⭐⭐ Dobré, potreboval malé úpravy  
+
 [ ] ✅ Fungoval perfektne (first try)  
 [ ] ⭐⭐⭐⭐ Dobré, potreboval malé úpravy  
 [ ] ⭐⭐⭐ OK, potreboval viac úprav  
@@ -42,7 +56,7 @@ Vyplň približný čas strávený s každým nástrojom:
 
 **Čo som musel upraviť / opraviť:**
 ```
-[Popíš čo si musel zmeniť. Ak nič, napíš "Nič, fungoval perfektne"]
+Z nejakeho dovodu priradil zle farbu k "--color-red-500" a nevytvoril ".text-preset-2" (uplne odignoroval styling)
 ```
 
 **Poznámky / Learnings:**
