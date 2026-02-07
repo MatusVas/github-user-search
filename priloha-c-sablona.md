@@ -156,6 +156,19 @@ update, fix and run unit tests - ng test
 **Výsledok:**
 ✅ Fungoval perfektne
 
+### Prompt #8
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ Final steps - Update DOCS ]
+
+**Prompt:**
+```
+update CLAUDE.md and all related files which need to be updated
+```
+
+**Výsledok:**
+✅ Fungoval perfektne
+
 ---
 
 ## 3. Problémy a Riešenia 

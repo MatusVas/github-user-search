@@ -8,7 +8,7 @@
     "dev": "nodemon proxy.js"
   },
   "keywords": ["oauth", "github", "proxy"],
-  "author": "",
+  "author": "Matus Vas",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.0",
