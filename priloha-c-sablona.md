@@ -25,7 +25,7 @@ Vyplň približný čas strávený s každým nástrojom:
 ### Prompt #1
 
 **Nástroj:** [ Claude Code ]  
-**Kontext:** [ Setup projektu ]
+**Kontext:** [ Setup project ]
 
 **Prompt:**
 ```
@@ -38,7 +38,7 @@ Vyplň približný čas strávený s každým nástrojom:
 ### Prompt #2
 
 **Nástroj:** [ Claude Code ]  
-**Kontext:** [ Setup projektu - Style Guide ]
+**Kontext:** [ Setup project - Style Guide ]
 
 **Prompt:**
 ```
@@ -92,9 +92,10 @@ Z nejakeho dovodu priradil zle farbu k "--color-red-500" a nevytvoril ".text-pre
 
 **Čo som musel upraviť / opraviť:**
 ```
-Nezobrazoval hlasku - No results found (card).
+Nezobrazoval error stav - No results found (card).
 Design pre mobil nebol presne podla figmy. (pozicia buttonu)
 Taktiez farba v dark mode pre light ikonku bola biela - biela ma byt iba pre hover/focus.
+Unit testy vsetky neboli dobre fixnute - niektore padli.
 ```
 
 **Poznámky / Learnings:**
@@ -102,7 +103,57 @@ Taktiez farba v dark mode pre light ikonku bola biela - biela ma byt iba pre hov
 ked sa napajal na figma - tak vypisal nejaky error, ze nevedel ziskat node id atd..., cize predpokladam, ze aj z tohoto dovodu nastali tieto mensie designove chyby, este raz som mu pastol odkaz na tu figmu kde sa nevedel napojit a uz to fixol vsetko spravne
 
 taktiez bol potrebny fix pre dark mode - `:host-context([data-theme='dark'])` predtym bolo iba `[data-theme='dark']`
+dodatocny promptami na fixnutie som to vyriesil 
 ```
+
+### Prompt #5
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ OAuth login - Part 1 ]
+
+**Prompt:**
+```
+/generate-prp INITIAL-auth-login.md
+```
+
+**Výsledok:**
+✅ Fungoval perfektne
+
+### Prompt #6
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ OAuth login - Part 2 ]
+
+**Prompt:**
+```
+/execute-prp github-oauth-login.md
+```
+
+**Výsledok:**
+✅ Fungoval perfektne
+
+**Čo som musel upraviť / opraviť:**
+```
+potreboval som iba vysvetlit ako presne spustit server a generovanie developer setting pre github oauth - client ID a client secrets ...
+```
+
+**Poznámky / Learnings:**
+```
+
+```
+
+### Prompt #7
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ Final steps - Unit tests ]
+
+**Prompt:**
+```
+
+```
+
+**Výsledok:**
+✅ Fungoval perfektne
 
 ---
 

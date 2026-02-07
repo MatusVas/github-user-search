@@ -48,6 +48,65 @@
   letter-spacing: var(--letter-spacing-preset-8);
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-300);
+}
+
+.btn-login {
+  padding: var(--spacing-150) var(--spacing-300);
+  background-color: var(--color-blue-500);
+  color: var(--color-neutral-0);
+  border: none;
+  border-radius: var(--radius-10);
+  font-family: var(--font-family);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-preset-5);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-login:hover {
+  background-color: var(--color-blue-300);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-150);
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-name {
+  color: var(--text-primary);
+  font-weight: var(--font-weight-preset-5);
+}
+
+.btn-logout {
+  padding: var(--spacing-100) var(--spacing-200);
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--text-tertiary);
+  border-radius: var(--radius-8);
+  font-family: var(--font-family);
+  font-size: var(--font-size-preset-7);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-logout:hover {
+  background-color: var(--color-red-500);
+  color: var(--color-neutral-0);
+  border-color: var(--color-red-500);
+}
+
 @media (max-width: 768px) {
   .header {
     margin-bottom: var(--spacing-400);
@@ -55,5 +114,18 @@
 
   .theme-toggle {
     gap: var(--spacing-150);
+  }
+
+  .header-actions {
+    gap: var(--spacing-200);
+  }
+
+  .user-name {
+    display: none;
+  }
+
+  .btn-login {
+    font-size: var(--font-size-preset-7);
+    padding: var(--spacing-100) var(--spacing-200);
   }
 }

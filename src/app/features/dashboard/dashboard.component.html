@@ -1,0 +1,50 @@
+<div class="dashboard">
+  <app-header />
+
+  <main class="dashboard-content">
+    <h2 class="text-preset-2 dashboard-title">Your Repositories</h2>
+
+    @if (isLoading()) {
+      <div class="loading">
+        <div class="spinner"></div>
+        <p class="text-preset-4">Loading repositories...</p>
+      </div>
+    } @else if (error()) {
+      <div class="error">
+        <p class="text-preset-4">{{ error() }}</p>
+      </div>
+    } @else if (repositories().length === 0) {
+      <div class="empty-state">
+        <p class="text-preset-4">No repositories found</p>
+      </div>
+    } @else {
+      <div class="repo-grid">
+        @for (repo of repositories(); track repo.fullName) {
+          <article class="repo-card">
+            <h3 class="repo-name text-preset-4">
+              <a [href]="repo.url" target="_blank" rel="noopener noreferrer">
+                {{ repo.name }}
+              </a>
+            </h3>
+            @if (repo.description) {
+              <p class="repo-description text-preset-6">{{ repo.description }}</p>
+            }
+            <div class="repo-meta">
+              @if (repo.language) {
+                <span class="repo-language text-preset-7">
+                  <span class="language-dot"></span>
+                  {{ repo.language }}
+                </span>
+              }
+              <span class="repo-stars text-preset-7">
+                <span class="star-icon">⭐</span>
+                {{ repo.stars }}
+              </span>
+              <span class="repo-updated text-preset-7">Updated {{ repo.lastUpdated }}</span>
+            </div>
+          </article>
+        }
+      </div>
+    }
+  </main>
+</div>
