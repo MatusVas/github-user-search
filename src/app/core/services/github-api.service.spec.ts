@@ -3,6 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { GithubApiService } from './github-api.service';
 import { GitHubUserResponse } from '../models/github-user.model';
+import { setupLocalStorageMock } from '../../../test-setup';
 
 describe('GithubApiService', () => {
   let service: GithubApiService;
@@ -24,6 +25,8 @@ describe('GithubApiService', () => {
   };
 
   beforeEach(() => {
+    setupLocalStorageMock();
+
     TestBed.configureTestingModule({
       providers: [
         GithubApiService,
@@ -37,6 +40,7 @@ describe('GithubApiService', () => {
 
   afterEach(() => {
     httpMock.verify();
+    TestBed.resetTestingModule();
   });
 
   it('should be created', () => {

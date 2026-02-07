@@ -4,6 +4,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { DashboardComponent } from './dashboard.component';
 import { GithubApiService } from '../../core/services/github-api.service';
 import { Repository } from '../../core/models/github-user.model';
+import { setupLocalStorageMock } from '../../../test-setup';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -23,6 +24,8 @@ describe('DashboardComponent', () => {
   ];
 
   beforeEach(() => {
+    setupLocalStorageMock();
+
     TestBed.configureTestingModule({
       providers: [
         DashboardComponent,
@@ -39,6 +42,8 @@ describe('DashboardComponent', () => {
 
   afterEach(() => {
     httpMock.verify();
+    TestBed.resetTestingModule();
+    vi.restoreAllMocks();
   });
 
   it('should create', () => {

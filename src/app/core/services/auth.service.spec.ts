@@ -4,6 +4,7 @@ import { HttpTestingController, provideHttpClientTesting } from '@angular/common
 import { provideRouter } from '@angular/router';
 import { AuthService } from './auth.service';
 import { vi } from 'vitest';
+import { setupLocalStorageMock, setupSessionStorageMock } from '../../../test-setup';
 
 describe('AuthService', () => {
   let service: AuthService;
@@ -12,31 +13,8 @@ describe('AuthService', () => {
   let mockSessionStorage: Map<string, string>;
 
   beforeEach(() => {
-    // Mock localStorage
-    mockStorage = new Map();
-    vi.spyOn(Storage.prototype, 'getItem').mockImplementation((key) => mockStorage.get(key) || null);
-    vi.spyOn(Storage.prototype, 'setItem').mockImplementation((key, value) => {
-      mockStorage.set(key, value);
-    });
-    vi.spyOn(Storage.prototype, 'removeItem').mockImplementation((key) => {
-      mockStorage.delete(key);
-    });
-
-    // Mock sessionStorage
-    mockSessionStorage = new Map();
-    const originalSessionStorage = window.sessionStorage;
-    Object.defineProperty(window, 'sessionStorage', {
-      value: {
-        getItem: (key: string) => mockSessionStorage.get(key) || null,
-        setItem: (key: string, value: string) => mockSessionStorage.set(key, value),
-        removeItem: (key: string) => mockSessionStorage.delete(key),
-        clear: () => mockSessionStorage.clear(),
-        get length() { return mockSessionStorage.size; },
-        key: (index: number) => Array.from(mockSessionStorage.keys())[index] || null
-      },
-      writable: true,
-      configurable: true
-    });
+    mockStorage = setupLocalStorageMock();
+    mockSessionStorage = setupSessionStorageMock();
 
     TestBed.configureTestingModule({
       providers: [
@@ -52,6 +30,7 @@ describe('AuthService', () => {
 
   afterEach(() => {
     httpMock.verify();
+    TestBed.resetTestingModule();
     vi.restoreAllMocks();
   });
 

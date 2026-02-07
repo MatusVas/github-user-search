@@ -3,6 +3,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { UserSearchComponent } from './user-search.component';
 import { GitHubUserResponse } from '../../core/models/github-user.model';
+import { setupLocalStorageMock, setupSessionStorageMock, setupMatchMediaMock } from '../../../test-setup';
 
 describe('UserSearchComponent', () => {
   let component: UserSearchComponent;
@@ -25,6 +26,10 @@ describe('UserSearchComponent', () => {
   };
 
   beforeEach(async () => {
+    setupLocalStorageMock();
+    setupSessionStorageMock();
+    setupMatchMediaMock();
+
     await TestBed.configureTestingModule({
       imports: [UserSearchComponent],
       providers: [
@@ -33,14 +38,18 @@ describe('UserSearchComponent', () => {
       ]
     }).compileComponents();
 
+    httpMock = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(UserSearchComponent);
     component = fixture.componentInstance;
-    httpMock = TestBed.inject(HttpTestingController);
     fixture.detectChanges();
   });
 
   afterEach(() => {
-    httpMock.verify();
+    if (httpMock) {
+      httpMock.verify();
+    }
+    vi.restoreAllMocks();
+    TestBed.resetTestingModule();
   });
 
   it('should create', () => {

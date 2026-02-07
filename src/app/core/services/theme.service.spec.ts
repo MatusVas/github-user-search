@@ -1,18 +1,21 @@
 import { TestBed } from '@angular/core/testing';
 import { ThemeService } from './theme.service';
+import { setupLocalStorageMock, setupMatchMediaMock } from '../../../test-setup';
 
 describe('ThemeService', () => {
   let service: ThemeService;
+  let mockStorage: Map<string, string>;
 
   beforeEach(() => {
-    localStorage.clear();
+    mockStorage = setupLocalStorageMock();
+    setupMatchMediaMock();
     TestBed.configureTestingModule({
       providers: [ThemeService]
     });
   });
 
   afterEach(() => {
-    localStorage.clear();
+    TestBed.resetTestingModule();
   });
 
   it('should be created', () => {
@@ -26,8 +29,16 @@ describe('ThemeService', () => {
   });
 
   it('should initialize from localStorage if available', () => {
-    localStorage.setItem('theme', 'dark');
+    mockStorage.set('theme', 'dark');
+
+    TestBed.resetTestingModule();
+    mockStorage = setupLocalStorageMock();
+    mockStorage.set('theme', 'dark');
+    TestBed.configureTestingModule({
+      providers: [ThemeService]
+    });
     service = TestBed.inject(ThemeService);
+
     expect(service.theme()).toBe('dark');
   });
 
@@ -53,9 +64,9 @@ describe('ThemeService', () => {
   it('should persist theme to localStorage', () => {
     service = TestBed.inject(ThemeService);
     service.toggleTheme();
-    expect(localStorage.getItem('theme')).toBe('dark');
+    expect(mockStorage.get('theme')).toBe('dark');
 
     service.toggleTheme();
-    expect(localStorage.getItem('theme')).toBe('light');
+    expect(mockStorage.get('theme')).toBe('light');
   });
 });
