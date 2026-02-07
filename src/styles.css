@@ -1,1 +1,192 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global styles for GitHub User Search App */
+
+/* Import Space Mono font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+  /* ===== COLORS ===== */
+
+  /* Neutral Colors */
+  --color-neutral-900: #141d2f;
+  --color-neutral-800: #1e2a47;
+  --color-neutral-700: #2b3442;
+  --color-neutral-500: #4b6a9b;
+  --color-neutral-300: #697c9a;
+  --color-neutral-200: #90a4d4;
+  --color-neutral-100: #f6f8ff;
+  --color-neutral-0: #ffffff;
+
+  /* Blue */
+  --color-blue-500: #0079ff;
+  --color-blue-300: #60abff;
+
+  /* Red (Error states) */
+  --color-red-500: #f74646;
+
+  /* ===== TYPOGRAPHY ===== */
+
+  /* Font Family */
+  --font-family: 'Space Mono', monospace;
+
+  /* Font Sizes & Line Heights */
+  --font-size-preset-1: 26px;
+  --line-height-preset-1: 1.2;
+  --font-weight-preset-1: 700;
+  --letter-spacing-preset-1: 0;
+
+  --font-size-preset-2: 22px;
+  --line-height-preset-2: 1.4;
+  --font-weight-preset-2: 700;
+  --letter-spacing-preset-2: 0;
+
+  --font-size-preset-3: 18px;
+  --line-height-preset-3: 1.4;
+  --font-weight-preset-3: 400;
+  --letter-spacing-preset-3: 0;
+
+  --font-size-preset-3-mobile: 13px;
+  --line-height-preset-3-mobile: 1.4;
+  --font-weight-preset-3-mobile: 400;
+  --letter-spacing-preset-3-mobile: 0;
+
+  --font-size-preset-4: 16px;
+  --line-height-preset-4: 1.5;
+  --font-weight-preset-4: 400;
+  --letter-spacing-preset-4: 0;
+
+  --font-size-preset-5: 16px;
+  --line-height-preset-5: 1.5;
+  --font-weight-preset-5: 700;
+  --letter-spacing-preset-5: 0;
+
+  --font-size-preset-6: 15px;
+  --line-height-preset-6: 1.5;
+  --font-weight-preset-6: 400;
+  --letter-spacing-preset-6: 0;
+
+  --font-size-preset-7: 13px;
+  --line-height-preset-7: 1.5;
+  --font-weight-preset-7: 400;
+  --letter-spacing-preset-7: 0;
+
+  --font-size-preset-8: 13px;
+  --line-height-preset-8: 1.4;
+  --font-weight-preset-8: 700;
+  --letter-spacing-preset-8: 2.5px;
+
+  /* ===== SPACING ===== */
+
+  --spacing-0: 0px;
+  --spacing-025: 2px;
+  --spacing-050: 4px;
+  --spacing-075: 6px;
+  --spacing-100: 8px;
+  --spacing-125: 10px;
+  --spacing-150: 12px;
+  --spacing-200: 16px;
+  --spacing-250: 20px;
+  --spacing-300: 24px;
+  --spacing-400: 32px;
+  --spacing-500: 40px;
+  --spacing-600: 48px;
+  --spacing-800: 64px;
+  --spacing-1000: 80px;
+
+  /* ===== BORDER RADIUS ===== */
+
+  --radius-0: 0px;
+  --radius-4: 4px;
+  --radius-6: 6px;
+  --radius-8: 8px;
+  --radius-10: 10px;
+  --radius-12: 12px;
+  --radius-16: 16px;
+  --radius-20: 20px;
+  --radius-24: 24px;
+  --radius-full: 999px;
+}
+
+/* ===== BASE STYLES ===== */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-preset-4);
+  line-height: var(--line-height-preset-4);
+  color: var(--color-neutral-900);
+  background-color: var(--color-neutral-100);
+}
+
+/* ===== UTILITY CLASSES ===== */
+
+/* Typography Presets */
+.text-preset-1 {
+  font-size: var(--font-size-preset-1);
+  line-height: var(--line-height-preset-1);
+  font-weight: var(--font-weight-preset-1);
+  letter-spacing: var(--letter-spacing-preset-1);
+}
+
+.text-preset-2 {
+  font-size: var(--font-size-preset-2);
+  line-height: var(--line-height-preset-2);
+  font-weight: var(--font-weight-preset-2);
+  letter-spacing: var(--letter-spacing-preset-2);
+}
+
+.text-preset-3 {
+  font-size: var(--font-size-preset-3);
+  line-height: var(--line-height-preset-3);
+  font-weight: var(--font-weight-preset-3);
+  letter-spacing: var(--letter-spacing-preset-3);
+}
+
+.text-preset-4 {
+  font-size: var(--font-size-preset-4);
+  line-height: var(--line-height-preset-4);
+  font-weight: var(--font-weight-preset-4);
+  letter-spacing: var(--letter-spacing-preset-4);
+}
+
+.text-preset-5 {
+  font-size: var(--font-size-preset-5);
+  line-height: var(--line-height-preset-5);
+  font-weight: var(--font-weight-preset-5);
+  letter-spacing: var(--letter-spacing-preset-5);
+}
+
+.text-preset-6 {
+  font-size: var(--font-size-preset-6);
+  line-height: var(--line-height-preset-6);
+  font-weight: var(--font-weight-preset-6);
+  letter-spacing: var(--letter-spacing-preset-6);
+}
+
+.text-preset-7 {
+  font-size: var(--font-size-preset-7);
+  line-height: var(--line-height-preset-7);
+  font-weight: var(--font-weight-preset-7);
+  letter-spacing: var(--letter-spacing-preset-7);
+}
+
+.text-preset-8 {
+  font-size: var(--font-size-preset-8);
+  line-height: var(--line-height-preset-8);
+  font-weight: var(--font-weight-preset-8);
+  letter-spacing: var(--letter-spacing-preset-8);
+}
+
+/* Mobile Typography */
+@media (max-width: 768px) {
+  .text-preset-3 {
+    font-size: var(--font-size-preset-3-mobile);
+    line-height: var(--line-height-preset-3-mobile);
+    font-weight: var(--font-weight-preset-3-mobile);
+    letter-spacing: var(--letter-spacing-preset-3-mobile);
+  }
+}
