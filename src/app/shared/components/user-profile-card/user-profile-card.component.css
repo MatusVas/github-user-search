@@ -1,0 +1,240 @@
+.profile-card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-16);
+  padding: var(--spacing-600);
+  box-shadow: var(--shadow-card);
+}
+
+/* Profile Header */
+.profile-header {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--spacing-400);
+  margin-bottom: var(--spacing-300);
+}
+
+.avatar {
+  width: 117px;
+  height: 117px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-200);
+}
+
+.user-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-025);
+}
+
+.user-name {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.username {
+  color: var(--color-blue-500);
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.username:hover {
+  text-decoration: underline;
+}
+
+/* Dark mode: use lighter blue for username */
+:host-context([data-theme='dark']) .username {
+  color: var(--color-blue-300);
+}
+
+.join-date {
+  color: var(--text-primary);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* Bio */
+.bio {
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-400);
+  line-height: 1.6;
+}
+
+/* Dark mode: add opacity to bio text */
+:host-context([data-theme='dark']) .bio {
+  opacity: 0.7;
+}
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-300);
+  background-color: var(--bg-primary);
+  padding: var(--spacing-200) var(--spacing-400);
+  border-radius: var(--radius-10);
+  margin-bottom: var(--spacing-400);
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-050);
+}
+
+.stat-label {
+  color: var(--text-secondary);
+}
+
+.stat-value {
+  color: var(--text-primary);
+}
+
+/* Links Grid */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-200);
+}
+
+.link-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-200);
+  color: var(--text-secondary);
+  transition: opacity 0.2s ease;
+}
+
+.link-item-clickable {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.link-item-clickable:hover {
+  color: var(--text-primary);
+  text-decoration: underline;
+}
+
+.link-item-clickable:focus-visible {
+  outline: 2px solid var(--color-blue-500);
+  outline-offset: 2px;
+  border-radius: var(--radius-4);
+}
+
+.link-item.unavailable {
+  opacity: 0.5;
+}
+
+.link-item span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Loading Skeleton */
+.loading-skeleton {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.skeleton-avatar {
+  width: 117px;
+  height: 117px;
+  border-radius: var(--radius-full);
+  background-color: var(--bg-primary);
+}
+
+.skeleton-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+
+.skeleton-line {
+  height: 20px;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-4);
+}
+
+.skeleton-line-short {
+  width: 40%;
+}
+
+.skeleton-line-medium {
+  width: 60%;
+}
+
+.skeleton-line-long {
+  width: 80%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .profile-card {
+    padding: var(--spacing-400) var(--spacing-300);
+  }
+
+  .profile-header {
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    gap: var(--spacing-250);
+    margin-bottom: var(--spacing-300);
+  }
+
+  .avatar {
+    width: 70px;
+    height: 70px;
+  }
+
+  .user-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-050);
+  }
+
+  .user-details {
+    gap: var(--spacing-025);
+  }
+
+  .join-date {
+    margin-top: 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    flex-direction: column;
+    gap: var(--spacing-050);
+  }
+
+  .links-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .profile-card {
+    padding: var(--spacing-500);
+  }
+
+  .avatar {
+    width: 90px;
+    height: 90px;
+  }
+}

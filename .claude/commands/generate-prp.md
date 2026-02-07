@@ -24,10 +24,6 @@ The AI agent only gets the context you are appending to the PRP and training dat
    - Specific patterns to mirror and where to find them?
    - Integration requirements and where to find them?
 
-## PRP Generation
-
-Using PRPs/templates/prp_base.md as template:
-
 ### Critical Context to Include and pass to the AI agent as part of the PRP
 - **Documentation**: URLs with specific sections
 - **Code Examples**: Real snippets from codebase
@@ -42,11 +38,9 @@ Using PRPs/templates/prp_base.md as template:
 
 ### Validation Gates (Must be Executable) eg for python
 ```bash
-# Syntax/Style
-ruff check --fix && mypy .
 
 # Unit Tests
-uv run pytest tests/ -v
+ng test
 
 ```
 

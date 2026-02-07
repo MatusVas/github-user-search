@@ -23,6 +23,21 @@
   /* Red (Error states) */
   --color-red-500: #f74646;
 
+  /* ===== SEMANTIC THEME TOKENS ===== */
+
+  /* Background colors */
+  --bg-primary: var(--color-neutral-100);
+  --bg-secondary: var(--color-neutral-0);
+  --bg-input: var(--color-neutral-0);
+
+  /* Text colors */
+  --text-primary: var(--color-neutral-700);
+  --text-secondary: var(--color-neutral-500);
+  --text-tertiary: var(--color-neutral-300);
+
+  /* Shadows */
+  --shadow-card: 0px 16px 30px -10px rgba(70, 96, 187, 0.198);
+
   /* ===== TYPOGRAPHY ===== */
 
   /* Font Family */
@@ -118,8 +133,26 @@ body {
   font-family: var(--font-family);
   font-size: var(--font-size-preset-4);
   line-height: var(--line-height-preset-4);
-  color: var(--color-neutral-900);
-  background-color: var(--color-neutral-100);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ===== DARK THEME ===== */
+
+[data-theme='dark'] {
+  /* Background colors */
+  --bg-primary: var(--color-neutral-900);
+  --bg-secondary: var(--color-neutral-800);
+  --bg-input: var(--color-neutral-800);
+
+  /* Text colors */
+  --text-primary: var(--color-neutral-0);
+  --text-secondary: var(--color-neutral-0);
+  --text-tertiary: var(--color-neutral-200);
+
+  /* Shadows */
+  --shadow-card: none;
 }
 
 /* ===== UTILITY CLASSES ===== */

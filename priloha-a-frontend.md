@@ -7,7 +7,7 @@
 **Features:**
 - Search by username
 - Display public profile:
-  - Avatar, meno, username
+  - Avatar, name, username
   - Bio, location, website
   - Stats: Public Repos | Followers | Following
   - Join date
@@ -28,7 +28,7 @@ GET https://api.github.com/users/{username}
 - OAuth flow
 - Session management (login / logout)
 - Display logged-in user:
-  - Avatar a meno v navbar
+  - Avatar and name in navbar/header
   - Logout button
 - Protected dashboard route
   - Show public repos list (top 10):

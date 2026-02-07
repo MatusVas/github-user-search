@@ -14,15 +14,15 @@
 
 Vyplň približný čas strávený s každým nástrojom:
 
-- **Claude Code:** 1 hodín  
+- **Claude Code:** 2 hodín
 
-**Celkový čas vývoja (priližne):** _____ hodín
+**Celkový čas vývoja (priližne):** 2 hodín
 
 ---
 
 ## 2. Zbierka Promptov
 
-### Prompt #1: _________________________________
+### Prompt #1
 
 **Nástroj:** [ Claude Code ]  
 **Kontext:** [ Setup projektu ]
@@ -35,7 +35,7 @@ Vyplň približný čas strávený s každým nástrojom:
 **Výsledok:**
 ✅ Fungoval perfektne 
 
-### Prompt #2: _________________________________
+### Prompt #2
 
 **Nástroj:** [ Claude Code ]  
 **Kontext:** [ Setup projektu - Style Guide ]
@@ -43,6 +43,42 @@ Vyplň približný čas strávený s každým nástrojom:
 **Prompt:**
 ```
 @commands/style-guide.md
+```
+
+**Výsledok:**
+⭐⭐⭐⭐ Dobré, potreboval malé úpravy  
+
+**Čo som musel upraviť / opraviť:**
+```
+Z nejakeho dovodu priradil zle farbu k "--color-red-500" a nevytvoril ".text-preset-2" (uplne odignoroval styling)
+```
+
+**Poznámky / Learnings:**
+```
+[Prečo fungoval / nefungoval? Čo by si urobil inak?]
+```
+
+### Prompt #3
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ Public search - Part 1 ]
+
+**Prompt:**
+```
+/generate-prp INITIAL-public-search.md
+```
+
+**Výsledok:**
+✅ Fungoval perfektne
+
+### Prompt #4
+
+**Nástroj:** [ Claude Code ]  
+**Kontext:** [ Public search - Part 2 ]
+
+**Prompt:**
+```
+/execute-prp github-public-search.md
 ```
 
 **Výsledok:**
@@ -56,19 +92,23 @@ Vyplň približný čas strávený s každým nástrojom:
 
 **Čo som musel upraviť / opraviť:**
 ```
-Z nejakeho dovodu priradil zle farbu k "--color-red-500" a nevytvoril ".text-preset-2" (uplne odignoroval styling)
+Nezobrazoval hlasku - No results found (card).
+Design pre mobil nebol presne podla figmy. (pozicia buttonu)
+Taktiez farba v dark mode pre light ikonku bola biela - biela ma byt iba pre hover/focus.
 ```
 
 **Poznámky / Learnings:**
 ```
-[Prečo fungoval / nefungoval? Čo by si urobil inak?]
+ked sa napajal na figma - tak vypisal nejaky error, ze nevedel ziskat node id atd..., cize predpokladam, ze aj z tohoto dovodu nastali tieto mensie designove chyby, este raz som mu pastol odkaz na tu figmu kde sa nevedel napojit a uz to fixol vsetko spravne
+
+taktiez bol potrebny fix pre dark mode - `:host-context([data-theme='dark'])` predtym bolo iba `[data-theme='dark']`
 ```
 
 ---
 
 ## 3. Problémy a Riešenia 
 
-### Problém #1: _________________________________
+### Problém #1
 
 **Čo sa stalo:**
 ```

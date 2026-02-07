@@ -1,0 +1,99 @@
+@if (isLoading) {
+  <div class="profile-card loading-skeleton">
+    <div class="skeleton-avatar"></div>
+    <div class="skeleton-content">
+      <div class="skeleton-line skeleton-line-short"></div>
+      <div class="skeleton-line skeleton-line-medium"></div>
+      <div class="skeleton-line skeleton-line-long"></div>
+    </div>
+  </div>
+} @else if (user) {
+  <div class="profile-card">
+    <div class="profile-header">
+      <img
+        [src]="user.avatarUrl"
+        [alt]="user.name || user.username"
+        class="avatar"
+      />
+      <div class="user-info">
+        <div class="user-details">
+          <h2 class="user-name text-preset-1">{{ user.name || user.username }}</h2>
+          <a
+            [href]="'https://github.com/' + user.username"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="username text-preset-4"
+          >
+            @{{ user.username }}
+          </a>
+        </div>
+        <p class="join-date text-preset-6">{{ user.joinedDate }}</p>
+      </div>
+    </div>
+
+    <p class="bio text-preset-4">
+      {{ user.bio || 'This profile has no bio' }}
+    </p>
+
+    <div class="stats-grid">
+      <div class="stat-item">
+        <span class="stat-label text-preset-7">Repos</span>
+        <span class="stat-value text-preset-2">{{ user.repos }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label text-preset-7">Followers</span>
+        <span class="stat-value text-preset-2">{{ user.followers }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label text-preset-7">Following</span>
+        <span class="stat-value text-preset-2">{{ user.following }}</span>
+      </div>
+    </div>
+
+    <div class="links-grid">
+      <div class="link-item" [class.unavailable]="!user.location">
+        <app-icon name="location" size="14" />
+        <span class="text-preset-6">{{ user.location || 'Not Available' }}</span>
+      </div>
+
+      @if (user.website) {
+        <a
+          [href]="user.website.startsWith('http') ? user.website : 'https://' + user.website"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-item link-item-clickable"
+        >
+          <app-icon name="website" size="20" />
+          <span class="text-preset-6">{{ user.website }}</span>
+        </a>
+      } @else {
+        <div class="link-item unavailable">
+          <app-icon name="website" size="20" />
+          <span class="text-preset-6">Not Available</span>
+        </div>
+      }
+
+      @if (user.twitter) {
+        <a
+          [href]="'https://twitter.com/' + user.twitter"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-item link-item-clickable"
+        >
+          <app-icon name="twitter" size="20" />
+          <span class="text-preset-6">{{ user.twitter }}</span>
+        </a>
+      } @else {
+        <div class="link-item unavailable">
+          <app-icon name="twitter" size="20" />
+          <span class="text-preset-6">Not Available</span>
+        </div>
+      }
+
+      <div class="link-item" [class.unavailable]="!user.company">
+        <app-icon name="company" size="20" />
+        <span class="text-preset-6">{{ user.company || 'Not Available' }}</span>
+      </div>
+    </div>
+  </div>
+}

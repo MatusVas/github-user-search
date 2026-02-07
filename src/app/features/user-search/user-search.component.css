@@ -1,0 +1,44 @@
+.container {
+  width: 100%;
+  max-width: 730px;
+  margin: 0 auto;
+  padding: var(--spacing-600) var(--spacing-300);
+}
+
+.error-card {
+  background-color: var(--bg-secondary);
+  border-radius: var(--radius-16);
+  padding: var(--spacing-600);
+  box-shadow: var(--shadow-card);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-200);
+}
+
+.error-title {
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.error-message {
+  color: var(--text-tertiary);
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-400) var(--spacing-200);
+    gap: var(--spacing-400);
+  }
+
+  .error-card {
+    padding: var(--spacing-400) var(--spacing-300);
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .container {
+    padding: var(--spacing-500) var(--spacing-400);
+  }
+}
