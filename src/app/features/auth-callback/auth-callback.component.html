@@ -1,0 +1,14 @@
+<div class="callback-container">
+  @if (isLoading()) {
+    <div class="loading-content">
+      <div class="spinner"></div>
+      <p class="text-preset-4">Completing sign in...</p>
+    </div>
+  }
+  @if (error()) {
+    <div class="error-content">
+      <p class="error-message text-preset-4">{{ error() }}</p>
+      <button class="btn-retry" (click)="retry()">Try Again</button>
+    </div>
+  }
+</div>

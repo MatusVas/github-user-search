@@ -1,0 +1,53 @@
+.callback-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: var(--spacing-300);
+  background-color: var(--bg-primary);
+}
+
+.loading-content,
+.error-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-300);
+  text-align: center;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid var(--text-tertiary);
+  border-top-color: var(--color-blue-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-message {
+  color: var(--color-red-500);
+}
+
+.btn-retry {
+  padding: var(--spacing-150) var(--spacing-300);
+  background-color: var(--color-blue-500);
+  color: var(--color-neutral-0);
+  border: none;
+  border-radius: var(--radius-10);
+  font-family: var(--font-family);
+  font-size: var(--font-size-preset-6);
+  font-weight: var(--font-weight-preset-5);
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-retry:hover {
+  background-color: var(--color-blue-300);
+}

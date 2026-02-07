@@ -1,11 +1,32 @@
 <header class="header">
   <h1 class="logo text-preset-1">devfinder</h1>
-  <button
-    class="theme-toggle"
-    (click)="onThemeToggle()"
-    [attr.aria-label]="'Toggle ' + themeLabel() + ' mode'"
-  >
-    <span class="theme-label text-preset-8">{{ themeLabel() }}</span>
-    <app-icon [name]="themeIcon()" />
-  </button>
+
+  <div class="header-actions">
+    <!-- Theme toggle -->
+    <button
+      class="theme-toggle"
+      (click)="onThemeToggle()"
+      [attr.aria-label]="'Toggle ' + themeLabel() + ' mode'"
+    >
+      <span class="theme-label text-preset-8">{{ themeLabel() }}</span>
+      <app-icon [name]="themeIcon()" />
+    </button>
+
+    <!-- Auth controls -->
+    @if (!isAuthenticated()) {
+      <button class="btn-login" (click)="onLogin()">Sign in with GitHub</button>
+    } @else if (userProfile()) {
+      <div class="user-info">
+        <img
+          [src]="userProfile()!.avatarUrl"
+          [alt]="userProfile()!.username"
+          class="user-avatar"
+        />
+        <span class="user-name text-preset-6">{{
+          userProfile()!.name || userProfile()!.username
+        }}</span>
+        <button class="btn-logout" (click)="onLogout()">Logout</button>
+      </div>
+    }
+  </div>
 </header>
