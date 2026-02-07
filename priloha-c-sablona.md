@@ -130,16 +130,17 @@ dodatocny promptami na fixnutie som to vyriesil
 ```
 
 **Výsledok:**
-✅ Fungoval perfektne
+⭐⭐⭐⭐ Dobré, potreboval malé úpravy 
 
 **Čo som musel upraviť / opraviť:**
 ```
+ukazat v kode, kde doplnit tieto secrete a este mensie upravy pre login auth,
 potreboval som iba vysvetlit ako presne spustit server a generovanie developer setting pre github oauth - client ID a client secrets ...
 ```
 
 **Poznámky / Learnings:**
 ```
-
+nacuil som sa nieco nove ohladom oauth, ako sa generuju v githube secrets atd...
 ```
 
 ### Prompt #7
@@ -149,7 +150,7 @@ potreboval som iba vysvetlit ako presne spustit server a generovanie developer s
 
 **Prompt:**
 ```
-
+update, fix and run unit tests - ng test
 ```
 
 **Výsledok:**

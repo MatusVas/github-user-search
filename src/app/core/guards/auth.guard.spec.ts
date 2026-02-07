@@ -5,21 +5,15 @@ import { provideHttpClient } from '@angular/common/http';
 import { authGuard } from './auth.guard';
 import { AuthService } from '../services/auth.service';
 import { vi } from 'vitest';
+import { setupLocalStorageMock, setupSessionStorageMock } from '../../../test-setup';
 
 describe('authGuard', () => {
   let authService: AuthService;
   let router: Router;
 
   beforeEach(() => {
-    // Mock localStorage
-    const mockStorage: { [key: string]: string } = {};
-    vi.spyOn(Storage.prototype, 'getItem').mockImplementation((key) => mockStorage[key] || null);
-    vi.spyOn(Storage.prototype, 'setItem').mockImplementation((key, value) => {
-      mockStorage[key] = value;
-    });
-    vi.spyOn(Storage.prototype, 'removeItem').mockImplementation((key) => {
-      delete mockStorage[key];
-    });
+    setupLocalStorageMock();
+    setupSessionStorageMock();
 
     TestBed.configureTestingModule({
       providers: [
@@ -37,6 +31,7 @@ describe('authGuard', () => {
   });
 
   afterEach(() => {
+    TestBed.resetTestingModule();
     vi.restoreAllMocks();
   });
 
@@ -47,7 +42,9 @@ describe('authGuard', () => {
     const route = {} as any;
     const state = { url: '/dashboard' } as any;
 
-    const result = authGuard(route, state);
+    const result = TestBed.runInInjectionContext(() =>
+      authGuard(route, state)
+    );
 
     expect(result).toBe(true);
   });
@@ -58,7 +55,9 @@ describe('authGuard', () => {
     const route = {} as any;
     const state = { url: '/dashboard' } as any;
 
-    const result = authGuard(route, state);
+    const result = TestBed.runInInjectionContext(() =>
+      authGuard(route, state)
+    );
 
     expect(result).toBeTruthy();
     expect(result).toHaveProperty('toString');
@@ -70,7 +69,9 @@ describe('authGuard', () => {
     const route = {} as any;
     const state = { url: '/dashboard' } as any;
 
-    const result = authGuard(route, state) as any;
+    const result = TestBed.runInInjectionContext(() =>
+      authGuard(route, state)
+    ) as any;
 
     expect(result.queryParams).toEqual({ returnUrl: '/dashboard' });
   });

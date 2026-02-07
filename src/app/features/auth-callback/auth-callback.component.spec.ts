@@ -7,6 +7,7 @@ import { AuthCallbackComponent } from './auth-callback.component';
 import { AuthService } from '../../core/services/auth.service';
 import { of, throwError } from 'rxjs';
 import { vi } from 'vitest';
+import { setupLocalStorageMock, setupSessionStorageMock } from '../../../test-setup';
 
 describe('AuthCallbackComponent', () => {
   let component: AuthCallbackComponent;
@@ -21,30 +22,8 @@ describe('AuthCallbackComponent', () => {
       }
     };
 
-    // Mock localStorage
-    const mockStorage = new Map<string, string>();
-    vi.spyOn(Storage.prototype, 'getItem').mockImplementation((key) => mockStorage.get(key) || null);
-    vi.spyOn(Storage.prototype, 'setItem').mockImplementation((key, value) => {
-      mockStorage.set(key, value);
-    });
-    vi.spyOn(Storage.prototype, 'removeItem').mockImplementation((key) => {
-      mockStorage.delete(key);
-    });
-
-    // Mock sessionStorage
-    const mockSessionStorage = new Map<string, string>();
-    Object.defineProperty(window, 'sessionStorage', {
-      value: {
-        getItem: (key: string) => mockSessionStorage.get(key) || null,
-        setItem: (key: string, value: string) => mockSessionStorage.set(key, value),
-        removeItem: (key: string) => mockSessionStorage.delete(key),
-        clear: () => mockSessionStorage.clear(),
-        get length() { return mockSessionStorage.size; },
-        key: (index: number) => Array.from(mockSessionStorage.keys())[index] || null
-      },
-      writable: true,
-      configurable: true
-    });
+    setupLocalStorageMock();
+    setupSessionStorageMock();
 
     TestBed.configureTestingModule({
       providers: [
@@ -56,14 +35,15 @@ describe('AuthCallbackComponent', () => {
       ]
     });
 
-    authService = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
+    authService = TestBed.inject(AuthService);
     component = TestBed.inject(AuthCallbackComponent);
 
     vi.spyOn(router, 'navigate').mockResolvedValue(true);
   });
 
   afterEach(() => {
+    TestBed.resetTestingModule();
     vi.restoreAllMocks();
   });
 

@@ -37,9 +37,10 @@ describe('SearchBarComponent', () => {
     expect(searchSpy).not.toHaveBeenCalled();
   });
 
-  it('should display error message when error input is set', () => {
-    component.error = 'No results';
+  it('should display error message when error input is set', async () => {
+    fixture.componentRef.setInput('error', 'No results');
     fixture.detectChanges();
+    await fixture.whenStable();
 
     const errorElement = fixture.nativeElement.querySelector('.error-text');
     expect(errorElement).toBeTruthy();
