@@ -1,0 +1,25 @@
+<div class="search-container">
+  <div class="search-input-wrapper">
+    <app-icon name="search" size="24" class="search-icon" />
+    <input
+      type="text"
+      class="search-input text-preset-3"
+      placeholder="Search GitHub username..."
+      [value]="searchInput()"
+      (input)="onInputChange($any($event.target).value)"
+      (keyup.enter)="onSearch()"
+      [attr.aria-invalid]="!!error"
+      [attr.aria-describedby]="error ? 'search-error' : null"
+    />
+    @if (error) {
+      <span id="search-error" class="error-text text-preset-5">{{ error }}</span>
+    }
+  </div>
+  <button
+    class="search-button text-preset-5"
+    (click)="onSearch()"
+    [disabled]="!searchInput().trim()"
+  >
+    Search
+  </button>
+</div>

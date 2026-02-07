@@ -1,0 +1,21 @@
+<div class="container">
+  <app-header />
+  <app-search-bar
+    [error]="error()"
+    (search)="onSearch($event)"
+  />
+
+  @if (error()) {
+    <div class="error-card">
+      <h2 class="error-title text-preset-2">No results found!</h2>
+      <p class="error-message text-preset-6">
+        We couldn't find any GitHub users matching your search. Please double-check the username and try again.
+      </p>
+    </div>
+  } @else {
+    <app-user-profile-card
+      [user]="userData()"
+      [isLoading]="isLoading()"
+    />
+  }
+</div>
